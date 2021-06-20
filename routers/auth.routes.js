@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const router = Router();
 
 const {
-login
+login, googleSingin
 } = require('../controllers/auth.controller');
 const { ValidarCampos } = require('../middlewares/validar-campos');
 
@@ -14,6 +14,11 @@ router.post('/login',[
     check('password', 'La contrasenia es obligatoria').not().isEmpty(),
     ValidarCampos
 ], login );
+
+router.post('/google',[
+    check('id_token', 'El id token es necesario').not().isEmpty(),
+    ValidarCampos
+], googleSingin );
 
 
 
