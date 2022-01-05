@@ -12,7 +12,9 @@ class Server {
         this.paths = {
             auth: '/api/auth',
             usuarios: '/api/usuarios',
-            categorias: '/api/categorias'
+            categorias: '/api/categorias',
+            productos: '/api/productos',
+            buscar: '/api/buscar'
         }
         //Conectar base de datos
         this.database();
@@ -26,6 +28,8 @@ class Server {
         this.app.use(this.paths.usuarios, require('../routers/usuarios.routes'));
         this.app.use(this.paths.auth, require('../routers/auth.routes'));
         this.app.use(this.paths.categorias, require('../routers/categorias.routes'));
+        this.app.use(this.paths.productos, require('../routers/productos.routes'));
+        this.app.use(this.paths.buscar, require('../routers/buscar.routes'));
     }
 
     listen(){
